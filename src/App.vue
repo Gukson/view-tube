@@ -1,12 +1,43 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <span class="font-sans">
+    <TheNavbar/>
+    <router-view v-show="show" :key="`${$route.path}${JSON.stringify($route.query)}`" @ready="ChangeIsLoading"/>
+    <span v-show="!show" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <AppSpinner />
+    </span>
+  </span>
+
 </template>
 
+<script>
+import TheNavbar from "@/components/TheNavbar";
+import AppSpinner from "@/components/AppSpinner";
+
+export default {
+  components: {AppSpinner, TheNavbar},
+  data() {
+    return {
+      show: false
+    }
+  },
+  methods: {
+    ChangeIsLoading() {
+      this.show = true
+    },
+  },
+  watch: {
+    $route() {
+      this.show = false
+    }
+  }
+}
+
+</script>
+
 <style lang="scss">
+body {
+  background-color: rgb(30 41 59);
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
