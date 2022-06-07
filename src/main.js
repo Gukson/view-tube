@@ -13,6 +13,7 @@ import VueMobileDetection from 'vue-mobile-detection'
 import ClickOutsideDirective from "@/composables/clickOutsideDirective";
 
 
+
 library.add(faBars, faGithub, faHome, faQuestion, faSearch, faThumbsUp, faEye)
 
 const viewtube = createApp(App)
