@@ -22,6 +22,6 @@ jobs:
       - name: Run a one-line script
         run: |
          chmod +x test.sh
-         test.sh ${{ secrets.VUE_APP_STORED_API_KEY }}
+         ./test.sh ${{ secrets.VUE_APP_STORED_API_KEY }}
         shell: bash
 
