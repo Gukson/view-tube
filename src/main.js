@@ -6,7 +6,7 @@ import store from './store'
 import './assets/tailwind.css'
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {library} from "@fortawesome/fontawesome-svg-core";
-import { faBars, faHome, faQuestion, faSearch, faThumbsUp, faEye } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faHome, faQuestion, faSearch, faHeart, faEye } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import YouTube from "vue3-youtube";
 import VueMobileDetection from 'vue-mobile-detection'
@@ -14,7 +14,7 @@ import ClickOutsideDirective from "@/composables/clickOutsideDirective";
 
 
 
-library.add(faBars, faGithub, faHome, faQuestion, faSearch, faThumbsUp, faEye)
+library.add(faBars, faGithub, faHome, faQuestion, faSearch, faHeart, faEye)
 
 const viewtube = createApp(App)
 

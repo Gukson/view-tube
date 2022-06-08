@@ -12,9 +12,7 @@ export default {
   },
   async mounted() {
     // dane o filmach, które są powiązane z tym
-    console.log(this.currentID)
-    console.log(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${this.currentID}&type=video&key=AIzaSyBktFeY2Q4FSn2aUAUVK5Zzzs_Hv52ECJ4`)
-    await this.$store.dispatch('getListOfMovies', { link: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${this.currentID}&type=video&key=AIzaSyBktFeY2Q4FSn2aUAUVK5Zzzs_Hv52ECJ4`})
+    await this.$store.dispatch('getListOfMovies', { link: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=${this.currentID}&type=video&key=${this.$store.state.API_key}`})
   },
   computed: {
     currentID() {

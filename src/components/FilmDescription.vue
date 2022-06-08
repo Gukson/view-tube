@@ -3,7 +3,7 @@
   <section class="">
     <span class="text-white_main my-7 bottom-0 grid grid-cols-3">
       <span class="flex flex-col">
-        <fa icon="thumbs-up" class="text-white_main" size="2x"></fa>
+        <fa icon="heart" class="text-red-500" size="2x"></fa>
         <label class="text-white_main">{{ changeNum(Film.likeCount) }}</label>
       </span>
       <span class=" flex flex-col">

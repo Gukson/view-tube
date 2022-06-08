@@ -1,6 +1,6 @@
 <template>
   <span class="z-0 static">
-    <div class="flex sm:p-6 flex-col">
+    <div class="flex py-2 sm:p-6 flex-col">
       <div class="h-auto ">
         <yt :src="`https://www.youtube.com/watch?v=${id}`"
             :width="width"
@@ -33,8 +33,8 @@ export default {
   mixins: [asyncDataStatus, VueMobileDetection],
   data(){
     return {
-      width: 400,
-      height: 260
+      width: 380,
+      height: 240
     }
   },
   async mounted() {
@@ -55,8 +55,8 @@ export default {
   methods: {
     adjustSize(){
       if (this.$isMobile()) {
-        this.width = 400
-        this.height = 260
+        this.width = 380
+        this.height = 240
       }else {
         this.width = 740
         this.height = 460
