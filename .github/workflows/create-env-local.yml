@@ -21,7 +21,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-         chmod +x test.sh ${{ secrets.VUE_APP_STORED_API_KEY }}
+         chmod +x test.sh
          test.sh ${{ secrets.VUE_APP_STORED_API_KEY }}
         shell: bash
 
