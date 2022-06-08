@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import store from "@/store";
+// import STORED_API_KEY from '/src/API_KEYS.txt'
+
+// HANDLE API KEY
+// const API_KEY = STORED_API_KEY
 
 const routes = [
   {
@@ -26,6 +30,7 @@ const router = createRouter({
   routes
 })
 router.beforeEach(() => {
+  // store.commit('setAPIKey', { key: API_KEY })
   store.commit('purgeState', { toPurge: 'movies'})
 })
 export default router

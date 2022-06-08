@@ -15,6 +15,7 @@ import TheNavbar from "@/components/TheNavbar";
 import AppSpinner from "@/components/AppSpinner";
 import PromptPWA from "@/components/PromptPWA";
 
+
 export default {
   components: {PromptPWA, AppSpinner, TheNavbar},
   data() {
