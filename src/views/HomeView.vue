@@ -34,7 +34,7 @@ export default {
   },
   async created() {
     this.$store.commit('purgeState', { toPurge: 'movies'})
-    await this.$store.dispatch('getListOfMovies', {link: 'https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key=AIzaSyBVr_YEdoGPKEp4OiGqM1muoGPE-05ePd8'})
+    await this.$store.dispatch('getListOfMovies', {link: `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key=${this.$store.state.API_key}`})
     this.asyncDataStatusChange()
   }
 }

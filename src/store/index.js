@@ -6,6 +6,7 @@ export default createStore({
     currentFilm: {},
     movies: [],
     users: [],
+    API_key: process.env.VUE_APP_STORED_API_KEY
   },
   getters: {
   },
@@ -27,13 +28,11 @@ export default createStore({
   },
   actions: {
     // stwórz object, który łączy dane o filmie i kanale
-    async getMovieDetails({commit}, {id, getCurrent = false}) {
+    async getMovieDetails({state, commit}, {id, getCurrent = false}) {
       try {
         // request by dostać konkretny film
-        const resp = await axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=AIzaSyBVr_YEdoGPKEp4OiGqM1muoGPE-05ePd8`);
+        const resp = await axios.get(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=${state.API_key}`);
         // stworzenie obiektu z potrzebnymi danymi
-        // console.log('pojedynczy film', resp)
-        // console.log('link, co nie działa', `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=AIzaSyBktFeY2Q4FSn2aUAUVK5Zzzs_Hv52ECJ4`)
         if (resp.data.items[0] === undefined) {
           return
         }
@@ -47,7 +46,7 @@ export default createStore({
           statistics: resp.data.items[0].statistics
         }
         // request by dostać kanał, który stworzył film
-        const sec_res = await axios.get(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${film.channelId}&key=AIzaSyBVr_YEdoGPKEp4OiGqM1muoGPE-05ePd8`)
+        const sec_res = await axios.get(`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${film.channelId}&key=${state.API_key}`)
         // commit gdy chcemy dostać pojedynczy film
         getCurrent ? commit('changeCurrentFilm', { film: {...film, channelName: sec_res.data.items[0].snippet.title, channelPhoto: sec_res.data.items[0].snippet.thumbnails.high.url}}) : ''
         // commit, odbywający się zawsze, bo zawsze chcemy dodać do state.movies
@@ -59,7 +58,6 @@ export default createStore({
     async getListOfMovies({dispatch}, {link}) {
       // dostań filmy, jedna lista
       let results = ''
-      // https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=US&key=AIzaSyBktFeY2Q4FSn2aUAUVK5Zzzs_Hv52ECJ4
       await axios.get(link
       ).then(response => {
         // // rezultat to lista z wiadomościami o filmie
