@@ -8,10 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Build Vue
     steps:
-    - name: Make envfile
-      uses: ozaytsev86/create-env-file@v1
-      with:
-        VUE_APP_STORED_API_KEY: ${{ secrets.VUE_APP_STORED_API_KEY }}
     - uses: actions/checkout@v2
     - id: Build-Vue
       uses: xRealNeon/VuePagesAction@1.0.1
