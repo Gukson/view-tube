@@ -18,7 +18,6 @@ export default createStore({
     // dodaj coś do state
     setInState(state, {elem, location}){
       // wepchnij każdy argument z pozyskanego zapytania do state
-      // array.forEach(x => state[location].push(x))
       // wrzuć element do listy w state
       state[location].push(elem)
     },
