@@ -8,14 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Build Vue
     steps:
-    - name: Make envfile
-      uses: SpicyPizza/create-envfile@v1.3
-      with:
-        envkey_DEBUG: false
-        envkey_SOME_API_KEY: "123456abcdef"
-        envkey_SECRET_KEY: ${{ secrets.VUE_APP_STORED_API_KEY }}
-        file_name: .env
-        fail_on_empty: false
     - uses: actions/checkout@v2
     - id: Build-Vue
       uses: xRealNeon/VuePagesAction@1.0.1
@@ -23,5 +15,8 @@ jobs:
         username: 'porfinogeneta'
         reponame: 'view-tube'
         token: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
+      env:
+        VUE_APP_STORED_API_KEY: ${{ secrets.VUE_APP_STORED_API_KEY }}        
+      
         
         
