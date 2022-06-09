@@ -19,5 +19,7 @@ jobs:
         username: 'porfinogeneta'
         reponame: 'view-tube'
         token: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
+      env:
+        VUE_APP_STORED_API_KEY: ${{ secrets.VUE_APP_STORED_API_KEY }}     
         
         
