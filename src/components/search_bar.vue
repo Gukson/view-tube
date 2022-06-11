@@ -27,7 +27,7 @@ export default {
       this.$store.commit('purgeState', {toPurge: 'movies'})
       this.query = ''
       // zmiana loadingu w store, bo search_bar to child navbar
-      await this.$store.dispatch('getListOfMovies', {link: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${q}&type=film&key=AIzaSyBktFeY2Q4FSn2aUAUVK5Zzzs_Hv52ECJ4`})
+      await this.$store.dispatch('getListOfMovies', {link: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${q}&type=film&key=${this.$store.state.API_key}`})
     }
   }
 }
