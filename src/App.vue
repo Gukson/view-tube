@@ -5,7 +5,7 @@
     <router-view v-show="show" :key="`${$route.path}${JSON.stringify($route.query)}`" @ready="ChangeIsLoading"/>
     <span v-show="!show" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
       <AppSpinner />
-    </span>
+    </span>s
   </span>
 
 </template>
